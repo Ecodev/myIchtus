@@ -177,6 +177,8 @@ export class BookableService extends NaturalAbstractModelService<
         return {
             name: [Validators.required, Validators.maxLength(100)],
             code: [Validators.maxLength(10)],
+            purchasePrice: [Validators.min(0)],
+            simultaneousBookingMaximum: [Validators.min(-1)],
         };
     }
 

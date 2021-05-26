@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @mixin rich-text($theme) {
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);
@@ -8,7 +9,7 @@
         line-height: 1.6em;
 
         a {
-            color: mat-color($primary);
+            color: mat.get-color-from-palette($primary);
         }
     }
 }

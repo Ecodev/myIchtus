@@ -3,7 +3,7 @@
  * See source doc here https://github.com/angular/material2/tree/master/src/lib/core/theming
  */
 // Import theming files full relative way or karma will display warning
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 @import '~@ecodev/natural/theming/natural.theme';
 @import '../app/shared/components/boot-loader/boot-loader.theme';
 @import '../app/app.theme';
@@ -15,7 +15,7 @@
 @import '../app/shared/components/transaction-amount/transaction-amount.theme';
 
 // Include material core (only once !)
-@include mat-core();
+@include mat.core();
 
 // Include components themes
 @mixin components-theme($theme) {
@@ -47,17 +47,17 @@ $mat-ichtus: (
     A400: #2979ff,
     A700: #2962ff,
     contrast: (
-        50: $black-87-opacity,
-        100: $black-87-opacity,
-        200: $black-87-opacity,
-        300: $black-87-opacity,
-        400: $black-87-opacity,
+        50: rgba(black, 0.87),
+        100: rgba(black, 0.87),
+        200: rgba(black, 0.87),
+        300: rgba(black, 0.87),
+        400: rgba(black, 0.87),
         500: white,
         600: white,
         700: white,
-        800: $white-87-opacity,
-        900: $white-87-opacity,
-        A100: $black-87-opacity,
+        800: rgba(white, 0.87),
+        900: rgba(white, 0.87),
+        A100: rgba(black, 0.87),
         A200: white,
         A400: white,
         A700: white,
@@ -65,10 +65,10 @@ $mat-ichtus: (
 );
 
 // Configure themes
-$ichtus-blue: mat-palette($mat-ichtus);
-$ichtus-orange: mat-palette($mat-orange);
-$ichtus-red: mat-palette($mat-red);
-$ichtus-theme: mat-light-theme($ichtus-blue, $ichtus-orange, $ichtus-red);
+$ichtus-blue: mat.define-palette($mat-ichtus);
+$ichtus-orange: mat.define-palette(mat.$orange-palette);
+$ichtus-red: mat.define-palette(mat.$red-palette);
+$ichtus-theme: mat.define-light-theme($ichtus-blue, $ichtus-orange, $ichtus-red);
 
-@include angular-material-theme($ichtus-theme);
+@include mat.all-component-themes($ichtus-theme);
 @include components-theme($ichtus-theme);

@@ -13,7 +13,7 @@ export class CreateRefundComponent implements OnInit {
      * Form for ExpenseClaimInput
      */
     public readonly form: FormGroup = this.fb.group({
-        amount: ['', [Validators.required, Validators.min(0), money]],
+        amount: ['', [Validators.required, Validators.min(1), money]],
         name: ['Demande de remboursement', [Validators.required, Validators.maxLength(50)]],
         description: ['', []],
     });

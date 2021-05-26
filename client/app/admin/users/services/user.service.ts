@@ -103,7 +103,8 @@ export class UserService
         never,
         never
     >
-    implements OnDestroy {
+    implements OnDestroy
+{
     /**
      * Should be used only by getViewer and cacheViewer
      */

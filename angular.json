@@ -20,7 +20,6 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "aot": true,
                         "preserveSymlinks": true,
                         "outputPath": "data/tmp/build",
                         "index": "client/index.html",
@@ -42,7 +41,13 @@
                         ],
                         "styles": ["client/styles/_themes.scss", "client/styles.scss"],
                         "scripts": [],
-                        "allowedCommonJsDependencies": ["zen-observable"]
+                        "allowedCommonJsDependencies": ["zen-observable"],
+                        "vendorChunk": true,
+                        "extractLicenses": false,
+                        "buildOptimizer": false,
+                        "sourceMap": true,
+                        "optimization": false,
+                        "namedChunks": true
                     },
                     "configurations": {
                         "production": {
@@ -56,7 +61,6 @@
                             "outputHashing": "all",
                             "sourceMap": false,
                             "namedChunks": false,
-                            "aot": true,
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true,
@@ -71,8 +75,10 @@
                                     "maximumWarning": "6kb"
                                 }
                             ]
-                        }
-                    }
+                        },
+                        "development": {}
+                    },
+                    "defaultConfiguration": "production"
                 },
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
@@ -81,15 +87,18 @@
                         "sslCert": "/sites/self-signed-certificate.crt",
                         "sslKey": "/sites/self-signed-certificate.key",
                         "port": 4300,
-                        "browserTarget": "my-ichtus:build",
                         "host": "my-ichtus.lan",
                         "proxyConfig": "proxy.conf.json"
                     },
                     "configurations": {
                         "production": {
                             "browserTarget": "my-ichtus:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "my-ichtus:build:development"
                         }
-                    }
+                    },
+                    "defaultConfiguration": "development"
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -141,14 +150,17 @@
                 "e2e": {
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
-                        "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "my-ichtus:serve"
+                        "protractorConfig": "e2e/protractor.conf.js"
                     },
                     "configurations": {
                         "production": {
                             "devServerTarget": "my-ichtus:serve:production"
+                        },
+                        "development": {
+                            "devServerTarget": "my-ichtus:serve:development"
                         }
-                    }
+                    },
+                    "defaultConfiguration": "development"
                 },
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
@@ -169,12 +181,17 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "aot": true,
                         "outputPath": "data/tmp/build-vanilla",
                         "index": "client/vanilla/index.html",
                         "main": "client/vanilla/main.ts",
                         "tsConfig": "client/vanilla/tsconfig.app.json",
-                        "polyfills": "client/vanilla/polyfills.ts"
+                        "polyfills": "client/vanilla/polyfills.ts",
+                        "vendorChunk": true,
+                        "extractLicenses": false,
+                        "buildOptimizer": false,
+                        "sourceMap": true,
+                        "optimization": false,
+                        "namedChunks": true
                     },
                     "configurations": {
                         "production": {
@@ -182,7 +199,6 @@
                             "outputHashing": "none",
                             "sourceMap": false,
                             "namedChunks": false,
-                            "aot": true,
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true,
@@ -197,8 +213,10 @@
                                     "maximumWarning": "6kb"
                                 }
                             ]
-                        }
-                    }
+                        },
+                        "development": {}
+                    },
+                    "defaultConfiguration": "production"
                 }
             }
         }

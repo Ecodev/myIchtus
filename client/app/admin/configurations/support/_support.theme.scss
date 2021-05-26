@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @mixin support($theme) {
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);
@@ -10,12 +11,12 @@
             border-bottom-width: 2px;
             border-bottom-style: solid;
 
-            color: mat-color($foreground, text);
-            border-color: mat-color($accent);
+            color: mat.get-color-from-palette($foreground, text);
+            border-color: mat.get-color-from-palette($accent);
 
             &:hover {
-                color: mat-color($accent);
-                border-color: mat-color($accent);
+                color: mat.get-color-from-palette($accent);
+                border-color: mat.get-color-from-palette($accent);
             }
         }
 

@@ -4,13 +4,12 @@ import {ActivatedRoute, NavigationStart, Router} from '@angular/router';
 import {BookableService} from '../../../admin/bookables/services/bookable.service';
 import {NaturalAbstractController, NaturalAlertService} from '@ecodev/natural';
 import {UserService} from '../../../admin/users/services/user.service';
-// @ts-ignore
-import * as Datatrans from '../../../datatrans-2.0.0-ecodev.js';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ProvisionComponent} from '../provision/provision.component';
 import {ConfigService, FrontEndConfig} from '../../../shared/services/config.service';
 import {filter, takeUntil} from 'rxjs/operators';
 import {CurrentUserForProfile_viewer} from '../../../shared/generated-types';
+import {DatatransService} from '../../../shared/services/datatrans.service';
 
 @Component({
     selector: 'app-profile',
@@ -33,6 +32,7 @@ export class ProfileComponent extends NaturalAbstractController implements OnIni
         public readonly bookableService: BookableService,
         private readonly apollo: Apollo,
         private readonly dialog: MatDialog,
+        private readonly datatransService: DatatransService,
         configService: ConfigService,
     ) {
         super();
@@ -51,7 +51,7 @@ export class ProfileComponent extends NaturalAbstractController implements OnIni
                 filter(event => event instanceof NavigationStart),
             )
             .subscribe(() => {
-                Datatrans.cleanup();
+                this.datatransService.cleanup();
             });
     }
 
@@ -87,7 +87,7 @@ export class ProfileComponent extends NaturalAbstractController implements OnIni
             return;
         }
 
-        const sign = Datatrans.getHexaSHA256Signature(
+        const sign = this.datatransService.getHexaSHA256Signature(
             '',
             this.config.datatrans.key,
             this.config.datatrans.merchantId,
@@ -96,7 +96,7 @@ export class ProfileComponent extends NaturalAbstractController implements OnIni
             user.id,
         );
 
-        Datatrans.startPayment({
+        this.datatransService.startPayment({
             params: {
                 production: this.config.datatrans.production,
                 merchantId: this.config.datatrans.merchantId,

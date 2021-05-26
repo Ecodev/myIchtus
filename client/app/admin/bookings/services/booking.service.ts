@@ -201,6 +201,7 @@ export class BookingService extends NaturalAbstractModelService<
     public getFormValidators(): FormValidators {
         return {
             owner: [Validators.required],
+            participantCount: [Validators.min(1)],
         };
     }
 

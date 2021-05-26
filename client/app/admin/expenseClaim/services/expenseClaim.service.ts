@@ -77,7 +77,7 @@ export class ExpenseClaimService extends NaturalAbstractModelService<
     public getFormValidators(): FormValidators {
         return {
             name: [Validators.required, Validators.maxLength(100)],
-            amount: [Validators.required, money, Validators.min(0)],
+            amount: [Validators.required, money, Validators.min(1)],
         };
     }
 

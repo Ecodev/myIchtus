@@ -21,7 +21,8 @@ export class EditableTransactionLinesComponent
         TransactionLineService,
         TransactionLines_transactionLines_items | TransactionLineInput
     >
-    implements OnInit {
+    implements OnInit
+{
     @Input() public transaction!: Transaction['transaction'];
 
     public accountHierarchicConfig = accountHierarchicConfiguration;

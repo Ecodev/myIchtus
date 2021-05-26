@@ -7,7 +7,7 @@ import {SafetyBookingService} from '../../../safety/safety-booking.service';
 @Directive()
 // tslint:disable-next-line:directive-class-suffix
 export abstract class AbstractBookings<
-    TService extends BookingService | BookingWithOwnerService | SafetyBookingService
+    TService extends BookingService | BookingWithOwnerService | SafetyBookingService,
 > extends NaturalAbstractList<TService> {
     @Input() public availableColumns?: string[];
 
