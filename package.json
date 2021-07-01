@@ -32,7 +32,7 @@
         "angular-particle-effect-button": "^0.0.50",
         "apollo": "^2.33.4",
         "apollo-angular": "^2.6.0",
-        "apollo-upload-client": "^15.0.0",
+        "apollo-upload-client": "^16.0.0",
         "crypto-es": "^1.2.7",
         "graphql": "^15.5.0",
         "ibantools": "^3.3.0",
