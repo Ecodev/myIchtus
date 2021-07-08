@@ -68,7 +68,7 @@
         "roave/psr-container-doctrine": "^2.2"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.18",
+        "friendsofphp/php-cs-fixer": "^3.0",
         "laminas/laminas-development-mode": "^3.3",
         "phpstan/phpstan-doctrine": "^0.12.33",
         "phpunit/phpunit": "^9.5"
