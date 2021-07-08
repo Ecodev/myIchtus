@@ -65,7 +65,7 @@
         "mezzio/mezzio-laminasviewrenderer": "^2.2",
         "mezzio/mezzio-session-ext": "^1.11",
         "phpoffice/phpspreadsheet": "^1.17",
-        "roave/psr-container-doctrine": "^2.2"
+        "roave/psr-container-doctrine": "^3.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.18",
